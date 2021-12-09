@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Users_WebApp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Users_WebApp
 {
@@ -24,6 +26,9 @@ namespace Users_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<OrdersContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("OrdersContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
