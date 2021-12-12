@@ -29,6 +29,18 @@ namespace Users_WebApp
 
             services.AddDbContext<OrdersContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("OrdersContext")));
+
+            services.AddDbContext<CustomersContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CustomersContext")));
+
+            services.AddDbContext<CustomerAccountDeletionRequestContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CustomerAccountDeletionRequest")));
+
+            services.AddDbContext<ProductReviewContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ProductReview")));
+
+            services.AddDbContext<ProductsContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("Products")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

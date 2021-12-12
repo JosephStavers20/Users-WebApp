@@ -1,0 +1,44 @@
+﻿@model Users_WebApp.Models.ProductReview
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProductReview</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ProductReviewHeader" class="control-label"></label>
+                <input asp-for="ProductReviewHeader" class="form-control" />
+                <span asp-validation-for="ProductReviewHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductReviewContent" class="control-label"></label>
+                <input asp-for="ProductReviewContent" class="form-control" />
+                <span asp-validation-for="ProductReviewContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductReviewDateTime" class="control-label"></label>
+                <input asp-for="ProductReviewDateTime" class="form-control" />
+                <span asp-validation-for="ProductReviewDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
