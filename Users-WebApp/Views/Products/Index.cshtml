@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Users_WebApp.Models.Products>
+﻿@model IEnumerable<Users_WebApp.Models.DomainModels.GetProductsDomainModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,10 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductDesc)
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                QTY
             </th>
             <th></th>
         </tr>
@@ -25,15 +34,24 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
+                @Html.DisplayFor(modelItem => item.productID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductDesc)
+                @Html.DisplayFor(modelItem => item.productName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.productDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productQuantity)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.productID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.productID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.productID">Delete</a>
             </td>
         </tr>
 }

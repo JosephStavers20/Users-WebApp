@@ -7,22 +7,34 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Users_WebApp.Data;
 using Users_WebApp.Models;
+using Users_WebApp.Models.DomainModels;
+using Users_WebApp.Services.ProductsService;
 
 namespace Users_WebApp.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ProductsContext _context;
+        private readonly IProductsService _productsService;
 
-        public ProductsController(ProductsContext context)
+        public ProductsController(ProductsContext context, IProductsService productsService)
         {
             _context = context;
+            _productsService = productsService;
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult<IEnumerable<GetProductsDomainModel>>> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            try
+            {
+                var getProducts = await _productsService.GetAllProducts();
+                return View(getProducts);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
         }
 
         // GET: Products/Details/5

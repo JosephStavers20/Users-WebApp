@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Users_WebApp.Data;
 using Microsoft.EntityFrameworkCore;
+using Users_WebApp.Services.ProductsService;
 
 namespace Users_WebApp
 {
@@ -41,6 +42,8 @@ namespace Users_WebApp
 
             services.AddDbContext<ProductsContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Products")));
+
+            services.AddHttpClient<IProductsService, ProductsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
