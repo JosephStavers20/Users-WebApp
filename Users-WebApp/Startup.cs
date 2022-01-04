@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Users_WebApp.Data;
+using Microsoft.EntityFrameworkCore;
+using Users_WebApp.Services.ProductsService;
 
 namespace Users_WebApp
 {
@@ -24,6 +27,23 @@ namespace Users_WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<OrdersContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("OrdersContext")));
+
+            services.AddDbContext<CustomersContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CustomersContext")));
+
+            services.AddDbContext<CustomerAccountDeletionRequestContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CustomerAccountDeletionRequest")));
+
+            services.AddDbContext<ProductReviewContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ProductReview")));
+
+            services.AddDbContext<ProductsContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("Products")));
+
+            services.AddHttpClient<IProductsService, ProductsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
