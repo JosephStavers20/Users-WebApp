@@ -9,6 +9,5 @@ namespace Users_WebApp.Services.ProductsService
     public interface IProductsService
     {
         public Task<IEnumerable<GetProductsDomainModel>> GetAllProducts();
-        public Task<GetProductsDomainModel> GetProductsByID(int? ID);
     }
 }

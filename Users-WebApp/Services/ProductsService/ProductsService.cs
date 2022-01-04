@@ -33,10 +33,5 @@ namespace Users_WebApp.Services.ProductsService
             var products = await response.Content.ReadAsAsync<IEnumerable<GetProductsDomainModel>>();
             return products;
         }
-
-        public async Task<ActionResult<>(int? id)
-        {
-
-        }
     }
 }
