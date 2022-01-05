@@ -14,7 +14,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
-        "PRODUCTS_URL": "https://thamco-staging-products.azurewebsites.net/api/products/"
+        "PRODUCTS_URL": "https://thamco-staging-products.azurewebsites.net/api/products/",
+        "ORDERS_URL": "https://production-thamcoorders.azurewebsites.net/"
       }
     },
     "Users_WebApp": {

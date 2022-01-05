@@ -24,10 +24,11 @@ namespace Users_WebApp.Data
                  new Customers
                  {
                      Id = 1,
-                     Name = "John Doe",
-                     Email = "JohnDoe@Example.com",
+                     FirstName = "John",
+                     LastName = "Doe",
                      PhoneNumber = "123456789",
-                     FlaggedForDelete = false
+                     Address = "whatever street",
+                     Postcode = "sr8 543"
                  }
                 );
         }

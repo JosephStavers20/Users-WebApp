@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Users_WebApp.Data;
 
 namespace Users_WebApp.Migrations.Customers
 {
     [DbContext(typeof(CustomersContext))]
-    partial class CustomersContextModelSnapshot : ModelSnapshot
+    [Migration("20220104165856_InitialCustomers")]
+    partial class InitialCustomers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

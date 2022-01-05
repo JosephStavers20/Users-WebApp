@@ -7,22 +7,36 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Users_WebApp.Data;
 using Users_WebApp.Models;
+using Users_WebApp.Services.OrdersService;
+using Users_WebApp.Models.DomainModels;
 
 namespace Users_WebApp.Controllers
 {
     public class OrdersController : Controller
     {
         private readonly OrdersContext _context;
+        private readonly IOrdersService _ordersService;
 
-        public OrdersController(OrdersContext context)
+        public OrdersController(OrdersContext context, IOrdersService ordersService)
         {
             _context = context;
+            _ordersService = ordersService;
         }
 
         // GET: Orders
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult<IEnumerable<GetOrdersDomainModel>>> Index()
         {
-            return View(await _context.Orders.ToListAsync());
+            try
+            {
+                var getOrders = await _ordersService.GetAllOrders();
+                return View(getOrders);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+
+            //return View(await _context.Orders.ToListAsync());
         }
 
         // GET: Orders/Details/5
