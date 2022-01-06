@@ -7,22 +7,36 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Users_WebApp.Data;
 using Users_WebApp.Models;
+using Users_WebApp.Models.DomainModels;
+using Users_WebApp.Services.CustomersService;
 
 namespace Users_WebApp.Controllers
 {
     public class CustomersController : Controller
     {
         private readonly CustomersContext _context;
+        private readonly ICustomersService _customersService;
 
-        public CustomersController(CustomersContext context)
+        public CustomersController(CustomersContext context, ICustomersService customersService)
         {
             _context = context;
+            _customersService = customersService;
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult<IEnumerable<GetCustomersDomainModel>>> Index()
         {
-            return View(await _context.Customers.ToListAsync());
+            try
+            {
+                var getAllCustomers = await _customersService.GetAllCustomers();
+                return View(getAllCustomers);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+
+            //return View(await _context.Customers.ToListAsync());
         }
 
         // GET: Customers/Details/5

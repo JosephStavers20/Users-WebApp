@@ -9,5 +9,7 @@ namespace Users_WebApp.Services.OrdersService
     public interface IOrdersService
     {
         public Task<IEnumerable<GetOrdersDomainModel>> GetAllOrders();
+
+        public Task<PostOrderDomainModel> PostOrder();
     }
 }

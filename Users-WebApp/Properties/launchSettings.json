@@ -15,18 +15,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
         "PRODUCTS_URL": "https://thamco-staging-products.azurewebsites.net/api/products/",
-        "ORDERS_URL": "https://production-thamcoorders.azurewebsites.net/"
-      },
-      "profiles": {
-        "IIS Express": {
-          "commandName": "IISExpress",
-          "launchBrowser": true,
-          "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Release",
-            "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
-            "PRODUCTS_URL": "https://thamco-staging-products.azurewebsites.net/api/products/",
-            "ORDERS_URL": "https://production-thamcoorders.azurewebsites.net/"
-          }
+        "ORDERS_URL": "https://production-thamcoorders.azurewebsites.net/",
+        "CUSTOMERS_URL": "https://thamco-staging-customercrudapi.azurewebsites.net",
+        "PRODUCT_REVIEWS_URL": "https://stage-thamcoproductreviews.azurewebsites.net/"
+      }
         },
         "Users_WebApp": {
           "commandName": "Project",

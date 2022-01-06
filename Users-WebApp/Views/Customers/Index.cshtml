@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Users_WebApp.Models.Customers>
+﻿@model IEnumerable<Users_WebApp.Models.DomainModels.GetCustomersDomainModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,6 +12,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -27,12 +30,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Postcode)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ID)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -48,10 +57,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Postcode)
             </td>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

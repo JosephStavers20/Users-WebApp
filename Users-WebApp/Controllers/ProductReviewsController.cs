@@ -7,22 +7,34 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Users_WebApp.Data;
 using Users_WebApp.Models;
+using Users_WebApp.Models.DomainModels;
+using Users_WebApp.Services.ProductReviewService;
 
 namespace Users_WebApp.Controllers
 {
     public class ProductReviewsController : Controller
     {
         private readonly ProductReviewContext _context;
+        private readonly IProductReviewService _productReviewsService;
 
-        public ProductReviewsController(ProductReviewContext context)
+        public ProductReviewsController(ProductReviewContext context, ProductReviewsService productReviewsService)
         {
             _context = context;
+            _productReviewsService = productReviewsService;
         }
 
         // GET: ProductReviews
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult<IEnumerable<GetProductReviewsModel>>> Index()
         {
-            return View(await _context.ProductReviews.ToListAsync());
+            try
+            {
+                var getProductsReviews = await _productReviewsService.GetAllProductReviews();
+                return View(getProductsReviews);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
         }
 
         // GET: ProductReviews/Details/5

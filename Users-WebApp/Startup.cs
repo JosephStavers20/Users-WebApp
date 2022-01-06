@@ -12,6 +12,8 @@ using Users_WebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Users_WebApp.Services.ProductsService;
 using Users_WebApp.Services.OrdersService;
+using Users_WebApp.Services.ProductReviewService;
+using Users_WebApp.Services.CustomersService;
 
 namespace Users_WebApp
 {
@@ -47,6 +49,10 @@ namespace Users_WebApp
             services.AddHttpClient<IProductsService, ProductsService>();
 
             services.AddHttpClient<IOrdersService, OrdersService >();
+
+            services.AddHttpClient<IProductReviewService, ProductReviewsService>();
+
+            services.AddHttpClient<ICustomersService, CustomersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

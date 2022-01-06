@@ -6,23 +6,23 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Users_WebApp.Models.DomainModels;
 
-namespace Users_WebApp.Services.OrdersService
+namespace Users_WebApp.Services.CustomersService
 {
-    public class OrdersService : IOrdersService
+    public class CustomersService : ICustomersService
     {
         private readonly IConfiguration _config;
         private readonly HttpClient _client;
-        public OrdersService(IConfiguration config, HttpClient client)
+        public CustomersService(IConfiguration config, HttpClient client)
         {
             _config = config;
 
-            client.BaseAddress = _config.GetValue<Uri>("ORDERS_URL");
+            client.BaseAddress = _config.GetValue<Uri>("CUSTOMERS_URL");
             client.Timeout = TimeSpan.FromSeconds(5);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             _client = client;
         }
 
-        public async Task<IEnumerable<GetOrdersDomainModel>> GetAllOrders()
+        public async Task<IEnumerable<GetCustomersDomainModel>> GetAllCustomers()
         {
             var response = await _client.GetAsync("");
             if (!response.IsSuccessStatusCode)
@@ -30,13 +30,8 @@ namespace Users_WebApp.Services.OrdersService
                 return null;
             }
             response.EnsureSuccessStatusCode();
-            var Orders = await response.Content.ReadAsAsync<IEnumerable<GetOrdersDomainModel>>();
-            return Orders;
-        }
-
-        public async Task<PostOrderDomainModel> PostOrder()
-        {
-
+            var AllCustomers = await response.Content.ReadAsAsync<IEnumerable<GetCustomersDomainModel>>();
+            return AllCustomers;
         }
     }
 }
