@@ -14,6 +14,7 @@ using Users_WebApp.Services.ProductsService;
 using Users_WebApp.Services.OrdersService;
 using Users_WebApp.Services.ProductReviewService;
 using Users_WebApp.Services.CustomersService;
+using Auth0.AspNetCore.Authentication;
 
 namespace Users_WebApp
 {
@@ -29,7 +30,16 @@ namespace Users_WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddAuth0WebAppAuthentication(options => {
+                    options.Domain = Configuration["Auth0:Domain"];
+                    options.ClientId = Configuration["Auth0:ClientId"];
+                    options.ClientSecret = Configuration["Auth0:ClientSecret"];
+                }).WithAccessToken(options => { options.Audience = Configuration["Auth0:Audience"]; });
+
             services.AddControllersWithViews();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.AddDbContext<OrdersContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("OrdersContext")));
@@ -48,11 +58,12 @@ namespace Users_WebApp
 
             services.AddHttpClient<IProductsService, ProductsService>();
 
-            services.AddHttpClient<IOrdersService, OrdersService >();
+            //services.AddHttpClient<IOrdersService, OrdersService >();
 
             services.AddHttpClient<IProductReviewService, ProductReviewsService>();
 
             services.AddHttpClient<ICustomersService, CustomersService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +85,8 @@ namespace Users_WebApp
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

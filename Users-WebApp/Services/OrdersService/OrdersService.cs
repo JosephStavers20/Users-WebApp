@@ -8,7 +8,7 @@ using Users_WebApp.Models.DomainModels;
 
 namespace Users_WebApp.Services.OrdersService
 {
-    public class OrdersService : IOrdersService
+    public class OrdersService 
     {
         private readonly IConfiguration _config;
         private readonly HttpClient _client;
@@ -34,9 +34,6 @@ namespace Users_WebApp.Services.OrdersService
             return Orders;
         }
 
-        public async Task<PostOrderDomainModel> PostOrder()
-        {
-
-        }
+        
     }
 }
