@@ -23,7 +23,7 @@ namespace Users_WebApp
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
-            _env = env
+            _env = env;
         }
 
         private IWebHostEnvironment _env = null;
