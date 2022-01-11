@@ -33,5 +33,10 @@ namespace Users_WebApp.Services.ProductReviewService
             var ProductReviews = await response.Content.ReadAsAsync<IEnumerable<GetProductReviewsModel>>();
             return ProductReviews;
         }
+
+        public async Task<PostProductReview> PostProductReview(PostProductReview productReview)
+        {
+
+        }
     }
 }

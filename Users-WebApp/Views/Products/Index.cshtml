@@ -28,24 +28,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.productID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productQuantity)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productDescription)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

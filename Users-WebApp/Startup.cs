@@ -20,10 +20,13 @@ namespace Users_WebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env
         }
+
+        private IWebHostEnvironment _env = null;
 
         public IConfiguration Configuration { get; }
 
@@ -36,6 +39,15 @@ namespace Users_WebApp
                     options.ClientId = Configuration["Auth0:ClientId"];
                     options.ClientSecret = Configuration["Auth0:ClientSecret"];
                 }).WithAccessToken(options => { options.Audience = Configuration["Auth0:Audience"]; });
+
+            if (_env.IsDevelopment())
+            {
+                services.AddTransient<IProductsService, FakeProductsService>();
+            }
+            else
+            {
+                services.AddHttpClient<IProductsService, ProductsService>();
+            }
 
             services.AddControllersWithViews();
 
@@ -55,8 +67,6 @@ namespace Users_WebApp
 
             services.AddDbContext<ProductsContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Products")));
-
-            services.AddHttpClient<IProductsService, ProductsService>();
 
             //services.AddHttpClient<IOrdersService, OrdersService >();
 
@@ -79,6 +89,18 @@ namespace Users_WebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404 || context.Response.StatusCode == 400)
+                {
+                    context.Request.Path = "/Home";
+                    await next();
+                }
+            });
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

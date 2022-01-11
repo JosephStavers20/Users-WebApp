@@ -23,21 +23,26 @@ namespace Users_WebApp.Controllers
             _ordersService = ordersService;
         }
 
-        // GET: Orders
-        public async Task<ActionResult<IEnumerable<GetOrdersDomainModel>>> Index()
+        public IActionResult Index()
         {
-            try
-            {
-                var getOrders = await _ordersService.GetAllOrders();
-                return View(getOrders);
-            }
-            catch (Exception e)
-            {
-                return BadRequest();
-            }
+            return View();
+        }
+
+        // GET: Orders
+        //public async Task<ActionResult<IEnumerable<GetOrdersDomainModel>>> Index()
+        //{
+            //try
+            //{
+                //var getOrders = await _ordersService.GetAllOrders();
+                //return View(getOrders);
+            //}
+            //catch (Exception e)
+            //{
+                //return BadRequest();
+            //}
 
             //return View(await _context.Orders.ToListAsync());
-        }
+        //}
 
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)

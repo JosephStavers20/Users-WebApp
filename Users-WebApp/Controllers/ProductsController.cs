@@ -33,7 +33,9 @@ namespace Users_WebApp.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return View("User-WebApp/Views/Error/Error");
+
+                //return BadRequest();
             }
         }
 

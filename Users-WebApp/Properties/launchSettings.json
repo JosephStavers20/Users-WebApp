@@ -15,9 +15,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
         "PRODUCTS_URL": "https://thamco-staging-products.azurewebsites.net/api/products/",
-        "ORDERS_URL": "https://production-thamcoorders.azurewebsites.net/",
-        "CUSTOMERS_URL": "https://thamco-staging-customercrudapi.azurewebsites.net",
-        "PRODUCT_REVIEWS_URL": "https://stage-thamcoproductreviews.azurewebsites.net/"
+        "ORDERS_URL": "https://staging-thamcoorders.azurewebsites.net/",
+        "CUSTOMERS_URL": "https://thamco-staging-customercrudapi.azurewebsites.net/api/Customers",
+        "PRODUCT_REVIEWS_URL": "https://stage-thamcoproductreviews.azurewebsites.net/",
+        "CUSTOMER_ACCOUNT_DELETION_REQUESTS_URL": "https://test-thamcocustomeraccountdeletionrequest.azurewebsites.net/"
       }
         },
         "Users_WebApp": {

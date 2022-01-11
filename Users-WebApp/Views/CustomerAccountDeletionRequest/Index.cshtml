@@ -1,0 +1,37 @@
+﻿@model Users_WebApp.Models.CustomerAccountDeletionRequest
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Want to Delete your account?</h1>
+
+<h4>Account Deletion Request</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerID" class="control-label"></label>
+                <input asp-for="CustomerID" class="form-control" />
+                <span asp-validation-for="CustomerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeletionReason" class="control-label"></label>
+                <input asp-for="DeletionReason" class="form-control" />
+                <span asp-validation-for="DeletionReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateRequested" class="control-label"></label>
+                <input asp-for="DateRequested" class="form-control" />
+                <span asp-validation-for="DateRequested" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

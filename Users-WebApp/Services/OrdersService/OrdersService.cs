@@ -21,19 +21,9 @@ namespace Users_WebApp.Services.OrdersService
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             _client = client;
         }
+        //public async Task<PostOrderDomainModel> PostOrder(Order)
+        //{
 
-        public async Task<IEnumerable<GetOrdersDomainModel>> GetAllOrders()
-        {
-            var response = await _client.GetAsync("");
-            if (!response.IsSuccessStatusCode)
-            {
-                return null;
-            }
-            response.EnsureSuccessStatusCode();
-            var Orders = await response.Content.ReadAsAsync<IEnumerable<GetOrdersDomainModel>>();
-            return Orders;
-        }
-
-        
+        //}
     }
 }

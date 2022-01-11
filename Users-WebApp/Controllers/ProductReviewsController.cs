@@ -23,37 +23,6 @@ namespace Users_WebApp.Controllers
             _productReviewsService = productReviewsService;
         }
 
-        // GET: ProductReviews
-        public async Task<ActionResult<IEnumerable<GetProductReviewsModel>>> Index()
-        {
-            try
-            {
-                var getProductsReviews = await _productReviewsService.GetAllProductReviews();
-                return View(getProductsReviews);
-            }
-            catch (Exception e)
-            {
-                return BadRequest();
-            }
-        }
-
-        // GET: ProductReviews/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var productReview = await _context.ProductReviews
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (productReview == null)
-            {
-                return NotFound();
-            }
-
-            return View(productReview);
-        }
 
         // GET: ProductReviews/Create
         public IActionResult Create()

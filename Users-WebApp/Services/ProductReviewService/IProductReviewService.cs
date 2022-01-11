@@ -9,5 +9,7 @@ namespace Users_WebApp.Services.ProductReviewService
     public interface IProductReviewService
     {
         public Task<IEnumerable<GetProductReviewsModel>> GetAllProductReviews();
+
+        public Task<PostProductReview> PostProductReview(PostProductReview postProductReview);
     }
 }
